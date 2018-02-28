@@ -15,25 +15,34 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    int coffeecups = 0;
+
+
+
     /**
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        int quantity=2;
-        display(quantity);
-        displayPrice(quantity *5);
+        int price = coffeecups * 5 ;
+        String priceMessage = "total due : £" + price +"\n thank you " ;
+        displayMessage(priceMessage);
+
     }
 
 
     public void plus (View view ){
-        int plus= 3;
-        display(plus);
+
+        coffeecups=coffeecups +1;
+        display(coffeecups);
 
     }
     public void minus (View view){
-        int minus = 1 ;
-        display (minus);
+
+        coffeecups=coffeecups -1 ;
+        display (coffeecups);
     }
+
+
 
 
     /**
@@ -50,6 +59,19 @@ public class MainActivity extends AppCompatActivity {
     private void displayPrice(int number) {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
+
+    }
+
+
+
+
+
+    /**
+     * This method displays the given text on the screen.
+     */
+    private void displayMessage(String message) {
+        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
+        priceTextView.setText(message);
     }
 
 }
